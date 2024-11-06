@@ -1,8 +1,8 @@
 {
   "name": "restaurant-apps",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -11,7 +11,7 @@
     "test:watch": "jest --watchAll"
   },
   "keywords": [],
-  "author": "your_name <your.email@domain.com>",
+  "author": "Ivan Wahyu Nugroho",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -37,5 +37,9 @@
   },
   "dependencies": {
     "regenerator-runtime": "^0.14.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "description": ""
 }

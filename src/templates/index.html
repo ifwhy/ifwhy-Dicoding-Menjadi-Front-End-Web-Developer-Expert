@@ -1,19 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Restaurant Apps</title>
-  </head>
-  <body>
-    <h1>Restaurant Apps Starter Project</h1>
-    <p>Hallo coders! Anda berhasil menjalankan starter project.</p>
-    <p>
-      Jangan lupa untuk menggunakan salah satu gambar yang berada pada ./images/heros
-      sebagai background hero elemen.
-    </p>
-    <img src="./images/heros/hero-image_1.jpg" width="450" alt="" />
-    <img src="./images/heros/hero-image_2.jpg" width="450" alt="" />
-    <img src="./images/heros/hero-image_3.jpg" width="450" alt="" />
-    <img src="./images/heros/hero-image_4.jpg" width="450" alt="" />
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kulinary</title>
+
+  <!-- Web Icon -->
+  <link rel="icons" href="../public/images/icons/kulinary-icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- MyCSS -->
+  <link rel="stylesheet" href="../styles/main.css">
+
+  <!-- MyScript -->
+  <script src="../scripts/index.js" defer></script>
+</head>
+<body>
+  <!-- Header mulai -->
+  <header>
+    <!-- Skip to Content -->
+    <a href="#skip-to-content" class="skip-to-content">Skip to Content</a>
+
+    <div class="header">
+      <a class="logo-icon" href="#">
+        <img src="../public/images/icons/kulinary-icon.png" alt="Icon Kulinary">
+        <h1>Kulinary</h1>
+      </a>
+    </div>
+    
+    <!-- Tombol toggle sidebar -->
+    <button class="sidebar-button" id="drawer-button">
+      <!-- Open icon -->
+      <svg class="isOpen" xmlns="http://www.w3.org/2000/svg" height="44px" viewBox="0 -960 960 960" width="44px" fill="#10375C"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+
+      <!-- Close icon -->
+      <svg class="isOpen close" xmlns="http://www.w3.org/2000/svg" height="44px" viewBox="0 -960 960 960" width="44px" fill="#10375C"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+    </button>
+
+    <!-- Sidebar untuk mobile -->
+    <nav class="mobile-sidebar">
+      <div id="nav-list" class="sidebar-mobile">
+        <a class="logo-icon" href="#">
+          <img src="../public/images/icons/kulinary-icon.png" alt="Icon Kulinary">
+          <h1>Kulinary</h1>
+        </a>
+
+        <!-- Pilihan Menu -->
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Favorite </a></li>
+          <li><a href="https://ifwhy.github.io/" target="_blank">About Us</a></li>
+        </ul>
+
+        <!-- Deskripsi -->
+        <div class="deskripsi">
+          <p>
+            <b>Kulinary</b> adalah platform katalog restoran yang memudahkan pencinta kuliner menemukan tempat makan terbaik. Temukan petualangan rasa yang tak terlupakan bersama Kulinary!
+          </p>
+        </div>
+
+        <!-- Follow us -->
+        <div class="follow-us">
+          <p id="follow-us">Follow Us</p>
+
+          <div class="social-media">
+            <a href="https://web.facebook.com/ivan.w.nugroho.73" target="_blank">
+              <img src="../public/images/icons/facebook-icon.png" alt="">
+
+              <p>Ivan Wahyu Nugroho</p>
+            </a>
+
+            <a href="https://www.instagram.com/ifwhy._" target="_blank">
+              <img src="../public/images/icons/instagram-icon.png" alt="">
+
+              <p>ifwhy._</p>
+            </a>
+
+            <a href="https://x.com" target="_blank">
+              <img src="../public/images/icons/x-icon.png" alt="">
+
+              <p>ifwhy._</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-sidebar">
+          <p>&copy; 2024 Kulinary. <br> All rights reserved.</p>
+        </div>
+  
+        </div>
+      </div>
+    </nav>
+
+    <!-- Navbar untuk tablet ke atas -->
+    <nav id="navbar-big">
+      <!-- Pilihan Menu -->
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Favorite </a></li>
+        <li><a href="https://ifwhy.github.io/" target="_blank">About Us</a></li>
+      </ul>
+    </nav>
+
+  </header>
+  <!-- Header selesai -->
+
+  <main id="skip-to-content">
+    <!-- Jumbotron -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Temukan Restoran Terbaik di Sekitar Anda</h1>
+        <p>Kulinary adalah platform katalog restoran yang memudahkan pencinta kuliner menemukan tempat makan terbaik. Temukan petualangan rasa yang tak terlupakan bersama Kulinary!</p>
+      </div>
+    </section>
+
+    <!-- Daftar Restoran -->
+     <section id="daftar-restoran">
+        <div class="restoran">
+          <div class="restoran-atas">
+            
+            <div class="location-icon">
+              <img src="../public/images/icons/location-icon.png" alt="Lokasi">
+              <div>
+                <p>Boyolali</p>
+              </div>
+            </div>
+            <div class="rating-icon">
+              <img src="../public/images/icons/rating-icon.png" alt="Rating">
+              <div>
+                <p>5.0</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="restoran-bawah">
+              <h2>Nama Restoran</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi amet corporis eius saepe asperiores ipsum fugit expedita dolorem voluptatem necessitatibus, dolor, nisi nesciunt, alias error aut magni placeat. A, vero.</p>
+          </div>
+        </div>
+     </section>
+  </main>
+
+  <footer>
+      <div class="logo-footer">
+        <img src="../public/images/icons/kulinary-icon.png" alt="">
+        <p>Kulinary</p>
+      </div>
+
+      <p id="copy-right">&copy; 2024 Kulinary.  All rights reserved.</p>
+  </footer>
+</body>
 </html>

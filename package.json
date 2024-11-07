@@ -1,7 +1,7 @@
 {
   "name": "restaurant-apps",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/templates/index.html",
   "type": "module",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
@@ -36,6 +36,7 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
+    "aos": "^3.0.0-beta.6",
     "regenerator-runtime": "^0.14.0"
   },
   "directories": {

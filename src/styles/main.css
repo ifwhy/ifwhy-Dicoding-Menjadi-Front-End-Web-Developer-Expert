@@ -18,7 +18,7 @@ header {
 }
 
 body {
-  min-height: 2000px;
+  height: max-content;
   background-color: var(--primary-color);
 }
 
@@ -95,7 +95,7 @@ header .sidebar-mobile {
 
   overflow-y: scroll;
   min-height: 100vh;
-  width: 75%;
+  width: 72.5%;
   padding: 20px 10px;
   background-color: var(--primary-color);
 
@@ -251,7 +251,7 @@ footer {
   justify-content: center;
   background-color: var(--tertiary-color);
   padding: 0.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
@@ -311,8 +311,8 @@ main .hero::before {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('../public/images/heros/hero-image_2.jpg');
   background-size: cover;
   background-position: center;
-  transition: transform 0.3s ease, filter 0.45s ease-in-out;
   z-index: 0;
+  transition: transform 0.3s ease, filter 0.45s ease-in-out;
   -webkit-transition: transform 0.3s ease, filter 0.45s ease-in-out;
   -moz-transition: transform 0.3s ease, filter 0.45s ease-in-out;
   -ms-transition: transform 0.3s ease, filter 0.45s ease-in-out;
@@ -376,6 +376,10 @@ main #daftar-restoran .restoran-atas .location-icon {
   margin-left: 1rem;
   align-items: start;
   gap: 0.25rem;
+}
+
+#break {
+  display: none;
 }
 
 main #daftar-restoran .restoran-atas .location-icon div {
@@ -455,6 +459,10 @@ main .restoran-atas {
     top: 0;
   }
 
+  #break {
+    display: inline;
+  }
+
   nav#navbar-big ul {
     display: flex;
     flex-direction: row;
@@ -475,7 +483,7 @@ main .restoran-atas {
   }
 
   body {
-    min-height: 2000px;
+    height: min-content;
   }
 
   header #navbar-big ul li a:hover, header #navbar-big ul li a:focus {
@@ -497,10 +505,33 @@ main .restoran-atas {
     text-align: center;
     background-color: black;
   }
+
+  footer {
+    padding-bottom: 1.5rem;
+    min-height:8rem;
+  }
+
+  main #daftar-restoran {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    gap: 0.5rem 2rem;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 /* Breakpoint untuk tablet 768px */
 
 @media screen and (min-width: 768px) {
-  
+  main .hero {
+    min-height: 30rem;
+  }
+
+  main #daftar-restoran {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    gap: 0.5rem 2rem;
+    padding-left: 15%;
+    padding-right: 15%;
+  }
 }

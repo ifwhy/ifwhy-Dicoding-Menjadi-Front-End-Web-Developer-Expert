@@ -509,6 +509,7 @@ main .restoran-atas {
   footer {
     padding-bottom: 1.5rem;
     min-height:8rem;
+    margin-top: 5rem;
   }
 
   main #daftar-restoran {

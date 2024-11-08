@@ -1,8 +1,8 @@
-// import 'regenerator-runtime'; /* for async await transpile */
-// import '../styles/main.css';
+import 'regenerator-runtime'; /* for async await transpile */
+import '../styles/style.css';
 
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const drawerButton = document.querySelector('#drawer-button');
 const drawerNavigation = document.querySelector('#nav-list');
@@ -124,13 +124,13 @@ class RestoranCard extends HTMLElement {
       <div class="restoran">
         <div class="restoran-atas">
           <div class="location-icon">
-            <img src="../public/images/icons/location-icon.png" alt="Lokasi">
+            <img src="./images/icons/location-icon.png" alt="Lokasi">
             <div>
               <p>${this.getAttribute('lokasi')}</p>
             </div>
           </div>
           <div class="rating-icon">
-            <img src="../public/images/icons/rating-icon.png" alt="Rating">
+            <img src="./images/icons/rating-icon.png" alt="Rating">
             <div>
               <p>${this.getAttribute('rating')}</p>
             </div>
@@ -231,8 +231,8 @@ const RestoCards = async (url) => {
     daftar_restoran.innerHTML = restoranCard;
 
   } catch (error) {
-    console.log('Error:', error);
+    console.log('Error:', error.message);
   }
 };
 
-RestoCards('../public/data/DATA.json');
+RestoCards("./data/DATA.json");

@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Katalog restoran Kulinary, Kuliner Nyentrik, website khusus pecinta kuliner nusantara.">
   <title>Kulinary | Kuliner Nyentrik</title>
 
   <!-- Web Icon -->
   <link rel="icon" href="./images/icons/kulinary-icon.png">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="app.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./images/webmanifest/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/webmanifest/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./images/webmanifest/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/webmanifest/favicon-16x16.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,23 +22,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
   <!-- MyScript -->
-  <script src="../scripts/index.js" defer></script>
+  <script defer src="main.bundle.js"></script>
+
 </head>
 <body>
   <!-- Header mulai -->
   <header>
     <!-- Skip to Content -->
-    <a href="#skip-to-content" class="skip-to-content">Skip to Content</a>
+    <a href="#daftar-restoran" title="Skip to Content" class="skip-to-content">Skip to Content</a>
 
     <div class="header">
-      <a class="logo-icon" href="#">
+      <a class="logo-icon" title="Logo Kulinary" href="#">
         <img src="./images/icons/kulinary-icon.png" alt="Icon Kulinary">
         <h1>Kulinary</h1>
       </a>
     </div>
     
     <!-- Tombol toggle sidebar -->
-    <button class="sidebar-button" id="drawer-button">
+    <button title="Tombol Buka Sidebar" class="sidebar-button" id="drawer-button">
       <!-- Open icon -->
       <svg class="isOpen menu-button" xmlns="http://www.w3.org/2000/svg" height="44px" viewBox="0 -960 960 960" width="44px" fill="#10375C"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
 
@@ -41,16 +50,16 @@
     <!-- Sidebar untuk mobile -->
     <nav class="mobile-sidebar">
       <div id="nav-list" class="sidebar-mobile">
-        <a class="logo-icon" href="#">
+        <a class="logo-icon" title="Logo Kulinary" href="#">
           <img src="./images/icons/kulinary-icon.png" alt="Icon Kulinary">
-          <h1>Kulinary</h1>
+          <h2>Kulinary</h2>
         </a>
 
         <!-- Pilihan Menu -->
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Favorite </a></li>
-          <li><a href="https://ifwhy.github.io/" target="_blank">About Us</a></li>
+          <li><a title="Menuju ke Home" href="/#">Home</a></li>
+          <li><a title="Menuju ke Favorite" href="#/favorite">Favorite </a></li>
+          <li><a title="Menuju ke About Us" href="https://ifwhy.github.io/" target="_blank" rel="noreferrer">About Us</a></li>
         </ul>
 
         <!-- Deskripsi -->
@@ -65,20 +74,20 @@
           <p id="follow-us">Follow Us</p>
 
           <div class="social-media">
-            <a href="https://web.facebook.com/ivan.w.nugroho.73" target="_blank">
-              <img src="../public/images/icons/facebook-icon.png" alt="">
+            <a title="Kunjungi Facebook Kami" href="https://web.facebook.com/ivan.w.nugroho.73" target="_blank">
+              <img src="./images/icons/facebook-icon.png" alt="Icon Facebook">
 
               <p>Ivan Wahyu Nugroho</p>
             </a>
 
-            <a href="https://www.instagram.com/ifwhy._" target="_blank">
-              <img src="../public/images/icons/instagram-icon.png" alt="">
+            <a title="Kunjungi Instagram Kami" href="https://www.instagram.com/ifwhy._" target="_blank">
+              <img src="./images/icons/instagram-icon.png" alt="Icon Instagram">
 
               <p>ifwhy._</p>
             </a>
 
-            <a href="https://x.com" target="_blank">
-              <img src="../public/images/icons/x-icon.png" alt="">
+            <a title="Kunjungi X kami" href="https://x.com" target="_blank">
+              <img src="./images/icons/x-icon.png" alt="Icon X">
 
               <p>ifwhy._</p>
             </a>
@@ -98,41 +107,22 @@
     <nav id="navbar-big">
       <!-- Pilihan Menu -->
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Favorite </a></li>
-        <li><a href="https://ifwhy.github.io/" target="_blank">About Us</a></li>
+        <li><a title="Menuju ke Home" href="/#">Home</a></li>
+        <li><a title="Menuju ke Favorite" href="#/favorite">Favorite </a></li>
+        <li><a title="Menuju ke About Us" href="https://ifwhy.github.io/" target="_blank" rel="noreferrer">About Us</a></li>
       </ul>
     </nav>
 
   </header>
   <!-- Header selesai -->
 
-  <main>
-    <!-- Jumbotron -->
-    <section 
-      id="skip-to-content"
-      class="hero" 
-      data-aos="zoom-in" 
-      data-aos-duration="1000" 
-      data-aos-delay="200"
-    >
-      <div class="hero-content">
-        <h1>Temukan Restoran Terbaik di Sekitar Anda</h1>
-        <p>Kulinary adalah platform katalog restoran yang memudahkan pencinta kuliner menemukan tempat makan terbaik. <br id="break"> Temukan petualangan rasa yang tak terlupakan bersama Kulinary!</p>
-      </div>
-    </section>
-
-    <!-- Daftar Restoran -->
-     <section id="daftar-restoran">
-
-      <!-- Diisi data JSON -->
-
-     </section>
+  <main id="main-content">
+    
   </main>
 
   <footer data-aos="fade-up">
       <div class="logo-footer">
-        <img src="./images/icons/kulinary-icon.png" alt="">
+        <img src="./images/icons/kulinary-icon.png" alt="Icon Kulinary">
         <p>Kulinary</p>
       </div>
 

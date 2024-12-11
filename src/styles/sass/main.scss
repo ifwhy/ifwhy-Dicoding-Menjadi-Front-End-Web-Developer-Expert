@@ -5,6 +5,10 @@
   --dark-color:#10375C;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -12,6 +16,7 @@ header {
   justify-content: space-between;
   z-index: 9999;
   position: sticky;
+  min-height: fit-content;
   background-color: var(--primary-color);
   top: 0;
   color: var(--dark-color);
@@ -22,9 +27,10 @@ body {
   background-color: var(--primary-color);
 }
 
-button {
+button, a, input {
   min-width: 44px;
   min-height: 44px;
+  display:inline-block;
 }
 
 * {
@@ -37,13 +43,14 @@ button {
 header {
   .skip-to-content {
     position: absolute;
+    scroll-behavior: smooth;
     top: -100rem;
     left: 0;
     background-color: var(--primary-color);
     color: var(--dark-color);
     padding: 10px;
     z-index: 9999;
-    transition: all 500ms ease-in-out;
+    transition: top 0.3s ease;
     text-decoration: none;
 
     &:focus {
@@ -543,9 +550,11 @@ main {
       padding-left: 15%;
       padding-right: 15%;
     }
+
   }
 
   #daftar-restoran {
     min-height: 80vh;
+    margin-top: 10rem;
   }
 }

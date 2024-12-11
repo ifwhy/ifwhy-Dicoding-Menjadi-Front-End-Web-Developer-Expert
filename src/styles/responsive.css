@@ -1,0 +1,16 @@
+/* Breakpoint untuk tablet 768px */
+@media screen and (min-width: 768px) {
+    main .hero {
+      min-height: 30rem;
+    }
+    main #daftar-restoran {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+      gap: 0.5rem 2rem;
+      padding-left: 15%;
+      padding-right: 15%;
+    }
+    #daftar-restoran {
+      min-height: 80vh;
+    }
+  }

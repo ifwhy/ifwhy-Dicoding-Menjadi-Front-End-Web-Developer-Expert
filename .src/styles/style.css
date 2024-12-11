@@ -5,6 +5,10 @@
   --dark-color:#10375C;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -22,7 +26,7 @@ body {
   background-color: var(--primary-color);
 }
 
-button {
+button, a, input {
   min-width: 44px;
   min-height: 44px;
 }
@@ -36,13 +40,14 @@ button {
 
 header .skip-to-content {
   position: absolute;
+  scroll-behavior: smooth;
   top: -100rem;
   left: 0;
   background-color: var(--primary-color);
   color: var(--dark-color);
   padding: 10px;
   z-index: 9999;
-  transition: all 500ms ease-in-out;
+  transition: top 0.3s ease;
   text-decoration: none;
 }
 header .skip-to-content:focus {
@@ -304,14 +309,14 @@ main .hero .hero-content h1 {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-main #daftar-restoran {
+main #skip-to-content {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   width: 100%;
   font-family: "Playfair Display";
   margin-top: 2rem;
 }
-main #daftar-restoran .restoran {
+main #skip-to-content .restoran {
   text-align: justify;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.08);
   border-radius: 0.5rem;
@@ -320,16 +325,16 @@ main #daftar-restoran .restoran {
   -ms-border-radius: 0.5rem;
   -o-border-radius: 0.5rem;
 }
-main #daftar-restoran .restoran-bawah {
+main #skip-to-content .restoran-bawah {
   padding: 1.5rem 1rem;
 }
-main #daftar-restoran .restoran-atas {
+main #skip-to-content .restoran-atas {
   display: flex;
   justify-content: space-between;
   align-items: end;
   color: var(--primary-color);
 }
-main #daftar-restoran .restoran-atas .location-icon {
+main #skip-to-content .restoran-atas .location-icon {
   display: flex;
   justify-content: center;
   font-weight: bold;
@@ -343,15 +348,15 @@ main #daftar-restoran .restoran-atas .location-icon {
   display: none;
 }
 
-main #daftar-restoran .restoran-atas .location-icon div {
+main #skip-to-content .restoran-atas .location-icon div {
   display: block;
   margin-top: auto;
   margin-bottom: auto;
 }
-main #daftar-restoran .restoran-atas .location-icon img {
+main #skip-to-content .restoran-atas .location-icon img {
   width: 2rem;
 }
-main #daftar-restoran .restoran-atas .rating-icon {
+main #skip-to-content .restoran-atas .rating-icon {
   display: flex;
   justify-content: center;
   font-weight: bold;
@@ -360,16 +365,16 @@ main #daftar-restoran .restoran-atas .rating-icon {
   align-items: end;
   gap: 0.25rem;
 }
-main #daftar-restoran .restoran-atas .rating-icon div {
+main #skip-to-content .restoran-atas .rating-icon div {
   display: block;
   margin-top: auto;
   margin-bottom: auto;
   margin-bottom: auto;
 }
-main #daftar-restoran .restoran-atas .rating-icon img {
+main #skip-to-content .restoran-atas .rating-icon img {
   width: 2rem;
 }
-main #daftar-restoran .restoran h2 {
+main #skip-to-content .restoran h2 {
   color: var(--dark-color);
 }
 main .restoran-atas {
@@ -448,7 +453,7 @@ main .restoran-atas {
     padding-bottom: 1.5rem;
     min-height: 8rem;
   }
-  main #daftar-restoran {
+  main #skip-to-content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.5rem 2rem;
@@ -461,7 +466,7 @@ main .restoran-atas {
   main .hero {
     min-height: 30rem;
   }
-  main #daftar-restoran {
+  main #skip-to-content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
     gap: 0.5rem 2rem;

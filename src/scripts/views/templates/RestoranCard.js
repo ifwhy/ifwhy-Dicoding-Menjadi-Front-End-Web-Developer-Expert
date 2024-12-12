@@ -1,13 +1,13 @@
 class RestoranCard extends HTMLElement {
-    constructor() {
-      super();
-      
-      // Attach Shadow DOM to the component
-      this.attachShadow({ mode: 'open' });
-      
-      // Prepare the HTML template
-      const template = document.createElement('template');
-      template.innerHTML = `
+  constructor() {
+    super();
+
+    // Attach Shadow DOM to the component
+    this.attachShadow({ mode: 'open' });
+
+    // Prepare the HTML template
+    const template = document.createElement('template');
+    template.innerHTML = `
         <style>
           .restoran {
             text-align: justify;
@@ -134,14 +134,14 @@ class RestoranCard extends HTMLElement {
           </div>
         </div>
       `;
-  
-      // Add the template to the shadow root
-      this.shadowRoot.appendChild(template.content.cloneNode(true));
-  
-      // Set the background image from the 'foto' attribute
-      const restoranAtas = this.shadowRoot.querySelector('.restoran-atas');
-      restoranAtas.style.setProperty('--foto', `url(${this.getAttribute('foto')})`);
-    }
+
+    // Add the template to the shadow root
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    // Set the background image from the 'foto' attribute
+    const restoranAtas = this.shadowRoot.querySelector('.restoran-atas');
+    restoranAtas.style.setProperty('--foto', `url(${this.getAttribute('foto')})`);
   }
+}
 
 export default RestoranCard;

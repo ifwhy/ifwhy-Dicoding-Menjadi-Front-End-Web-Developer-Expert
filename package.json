@@ -6,6 +6,7 @@
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "serve": "http-server dist",
+    "lint": "eslint src --fix",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "build:sass": "sass ./src/styles/sass/main.scss ./src/styles/main.css",

@@ -1,109 +1,114 @@
-import FavoriteRestaurantDB from "../../data/favorite-restaurant-idb";
-import { API_ENDPOINT } from "../../globals/API_ENDPOINT";
-import Swal from "sweetalert2";
+import FavoriteRestaurantDB from '../../data/favorite-restaurant-idb';
+import { API_ENDPOINT } from '../../globals/API_ENDPOINT';
+import Swal from 'sweetalert2';
 
 class RestaurantDetail extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" });
-    }
-  
-    async connectedCallback() {
-      const id = this.getAttribute("data-id");
-      const restaurantData = await this._fetchRestaurantDetail(id);
-      this._render(restaurantData);
-      await this._handleAddToFavorite();
-    }
-  
-    async _fetchRestaurantDetail(id) {
-      try {
-        const response = await fetch(`${API_ENDPOINT}/detail/${id}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch restaurant details: ${response.statusText}`);
-        }
-        const data = await response.json();
-        return data.restaurant;
-      } catch (error) {
-        console.error(error);
-        return null;
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  async connectedCallback() {
+    const id = this.getAttribute('data-id');
+    const restaurantData = await this._fetchRestaurantDetail(id);
+    await this._render(restaurantData);
+    await this._handleAddToFavorite();
+  }
+
+  async _fetchRestaurantDetail(id) {
+    try {
+      const response = await fetch(`${API_ENDPOINT}/detail/${id}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch restaurant details: ${response.statusText}`);
       }
-    }
-
-    async _handleAddToFavorite() {
-      const button = this.shadowRoot.querySelector("#form-add-to-favorite button");
-      
-      const updateButtonText = async () => {
-        const isDataExist = await FavoriteRestaurantDB.getRestaurant(this.getAttribute("data-id"));
-        button.textContent = isDataExist
-          ? "Remove Restaurant from Favorite"
-          : "Add Restaurant to Favorite";
-      };
-    
-      // Perbarui teks tombol saat listener diinisialisasi
-      await updateButtonText();
-    
-      button.addEventListener("click", async () => {
-        const isDataExist = await FavoriteRestaurantDB.getRestaurant(this.getAttribute("data-id"));
-    
-        if (isDataExist) {
-          await FavoriteRestaurantDB.deleteRestaurant(this.getAttribute("data-id"));
-          Swal.fire({
-            title: "Success!",
-            text: "Restaurant has been removed from your favorite list",
-            icon: "success",
-            color: "#10375C",
-            confirmButtonColor: "#EB8317"
-          });
-        } else {
-
-          const restaurantData = await this._fetchRestaurantDetail(this.getAttribute("data-id"));
-          await FavoriteRestaurantDB.putRestaurant(restaurantData);
-          Swal.fire({
-            title: "Success!",
-            text: "Restaurant has been added to your favorite list",
-            icon: "success",
-            color: "#10375C",
-            confirmButtonColor: "#EB8317"
-          });
-        }
-    
-        // Perbarui teks tombol setelah operasi selesai
-        await updateButtonText();
+      const data = await response.json();
+      return data.restaurant;
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Failed to load restaurant details. Please try again later.',
+        icon: 'error',
+        color: '#10375C',
+        confirmButtonColor: '#EB8317'
       });
-    }    
-  
-    _render(restaurant) {
-      if (!restaurant) {
-        this.shadowRoot.innerHTML = `<p style="text-align:center;">Failed to load restaurant details. Please try again later.</p>`;
-        return;
+      return null;
+    }
+  }
+
+  async _handleAddToFavorite() {
+    const button = this.shadowRoot.querySelector('#form-add-to-favorite button');
+
+    const updateButtonText = async () => {
+      const isDataExist = await FavoriteRestaurantDB.getRestaurant(this.getAttribute('data-id'));
+      button.textContent = isDataExist
+        ? 'Remove Restaurant from Favorite'
+        : 'Add Restaurant to Favorite';
+    };
+
+    // Perbarui teks tombol saat listener diinisialisasi
+    await updateButtonText();
+
+    button.addEventListener('click', async () => {
+      const isDataExist = await FavoriteRestaurantDB.getRestaurant(this.getAttribute('data-id'));
+
+      if (isDataExist) {
+        await FavoriteRestaurantDB.deleteRestaurant(this.getAttribute('data-id'));
+        Swal.fire({
+          title: 'Success!',
+          text: 'Restaurant has been removed from your favorite list',
+          icon: 'success',
+          color: '#10375C',
+          confirmButtonColor: '#EB8317'
+        });
+      } else {
+        const restaurantData = await this._fetchRestaurantDetail(this.getAttribute('data-id'));
+        await FavoriteRestaurantDB.putRestaurant(restaurantData);
+        Swal.fire({
+          title: 'Success!',
+          text: 'Restaurant has been added to your favorite list',
+          icon: 'success',
+          color: '#10375C',
+          confirmButtonColor: '#EB8317'
+        });
       }
-  
-      const {
-        name,
-        description,
-        pictureId,
-        city,
-        address,
-        categories,
-        menus: { foods, drinks },
-        rating,
-        customerReviews,
-      } = restaurant;
-  
-      const categoryTags = categories.map((cat) => `<span class="tag">${cat.name}</span>`).join("");
-      const foodList = foods.map((food) => `<li>${food.name}</li>`).join("");
-      const drinkList = drinks.map((drink) => `<li>${drink.name}</li>`).join("");
-      const reviews = customerReviews
-        .map(
-          (review) =>
-            `<div class="review">
+
+      // Perbarui teks tombol setelah operasi selesai
+      await updateButtonText();
+    });
+  }
+
+  _render(restaurant) {
+    if (!restaurant) {
+      this.shadowRoot.innerHTML = '<p style="text-align:center;">Failed to load restaurant details. Please try again later.</p>';
+      return;
+    }
+
+    const {
+      name,
+      description,
+      pictureId,
+      city,
+      address,
+      categories,
+      menus: { foods, drinks },
+      rating,
+      customerReviews,
+    } = restaurant;
+
+    const categoryTags = categories.map((cat) => `<span class="tag">${cat.name}</span>`).join('');
+    const foodList = foods.map((food) => `<li>${food.name}</li>`).join('');
+    const drinkList = drinks.map((drink) => `<li>${drink.name}</li>`).join('');
+    const reviews = customerReviews
+      .map(
+        (review) =>
+          `<div class="review">
               <p><strong>${review.name}</strong> (${review.date}):</p>
               <p>${review.review}</p>
             </div>`
-        )
-        .join("");
-  
-      this.shadowRoot.innerHTML = `
+      )
+      .join('');
+
+    this.shadowRoot.innerHTML = `
         <style>
           .card-resto {
             max-width: 60%;
@@ -327,78 +332,84 @@ class RestaurantDetail extends HTMLElement {
         </div>
       `;
 
-      // Attach event listener to the submit button
-      this.shadowRoot.querySelector("#add-reviews").addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const name = this.shadowRoot.querySelector("#review-name").value;
-        const reviewContent = this.shadowRoot.querySelector("#review-content").value;
-        
-        const urlHash = window.location.hash; // Mendapatkan bagian hash dari URL
-        const idMatch = urlHash.match(/\/detail\/(.+)/);
+    // Attach event listener to the submit button
+    this.shadowRoot.querySelector('#add-reviews').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const name = this.shadowRoot.querySelector('#review-name').value;
+      const reviewContent = this.shadowRoot.querySelector('#review-content').value;
 
-        if (name && reviewContent) {
-          const reviewData = {
-            id:idMatch[1],
-            name,
-            review: reviewContent,
+      const urlHash = window.location.hash; // Mendapatkan bagian hash dari URL
+      const idMatch = urlHash.match(/\/detail\/(.+)/);
+
+      if (name && reviewContent) {
+        const reviewData = {
+          id:idMatch[1],
+          name,
+          review: reviewContent,
         };
 
-          const result = await this._postReview(reviewData);
-          if (result) {
-            const date = result.customerReviews.slice(-1)[0].date;
+        const result = await this._postReview(reviewData);
+        if (result) {
+          const date = result.customerReviews.slice(-1)[0].date;
 
-            const newReview = `
+          const newReview = `
               <div class="review">
                 <p><strong>${reviewData.name}</strong> (${date}):</p>
                 <p>${reviewData.review}</p>
               </div>
             `;
-            this.shadowRoot.querySelector(".reviews").innerHTML += newReview;
-            
-            // Clear input fields
-            this.shadowRoot.querySelector("#review-name").value = "";
-            this.shadowRoot.querySelector("#review-content").value = "";
+          this.shadowRoot.querySelector('.reviews').innerHTML += newReview;
 
-            Swal.fire({
-                title: "Thank You!",
-                text: "Success to add your review!",
-                icon: "success",
-                color: "#10375C",
-                confirmButtonColor: "#EB8317"
-            });
-          }
-        } else {
-            Swal.fire({
-                title: "Ups...!",
-                text: "Please fill in both the name and review.!",
-                icon: "warning",
-                color: "#10375C",
-                confirmButtonColor: "#EB8317"
-            });
+          // Clear input fields
+          this.shadowRoot.querySelector('#review-name').value = '';
+          this.shadowRoot.querySelector('#review-content').value = '';
+
+          Swal.fire({
+            title: 'Thank You!',
+            text: 'Success to add your review!',
+            icon: 'success',
+            color: '#10375C',
+            confirmButtonColor: '#EB8317'
+          });
         }
+      } else {
+        Swal.fire({
+          title: 'Ups...!',
+          text: 'Please fill in both the name and review.!',
+          icon: 'warning',
+          color: '#10375C',
+          confirmButtonColor: '#EB8317'
+        });
+      }
+    });
+  }
+
+  async _postReview(reviewData) {
+    try {
+      const response = await fetch(`${API_ENDPOINT}/review`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reviewData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to post review: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'There was an error submitting your review. Please try again.',
+        icon: 'error',
+        color: '#10375C',
+        confirmButtonColor: '#EB8317'
       });
     }
-  
-    async _postReview(reviewData) {
-      try {
-        const response = await fetch(`${API_ENDPOINT}/review`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(reviewData),
-        });
-        
-        if (!response.ok) {
-          throw new Error(`Failed to post review: ${response.statusText}`);
-        }
-        
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        alert("There was an error submitting your review. Please try again.");
-      }
-    }
+  }
 }
 
 export default RestaurantDetail;

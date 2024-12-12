@@ -29,15 +29,15 @@ const detail_restaurants = {
     const idMatch = urlHash.match(/\/detail\/(.+)/); // Regex untuk menangkap ID setelah "/detail/"
 
     if (!idMatch || !idMatch[1]) {
-      const detailContainer = document.getElementById("detail-container");
-      detailContainer.innerHTML = `<p style="text-align:center">Invalid restaurant ID. Please try again.</p>`;
+      const detailContainer = document.getElementById('detail-container');
+      detailContainer.innerHTML = '<p style="text-align:center">Invalid restaurant ID. Please try again.</p>';
       return;
     }
 
     const restaurantId = idMatch[1]; // ID restoran yang valid
-    const detailContainer = document.getElementById("detail-container");
-    const restaurantDetailElement = document.createElement("restaurant-detail");
-    restaurantDetailElement.setAttribute("data-id", restaurantId);
+    const detailContainer = document.getElementById('detail-container');
+    const restaurantDetailElement = document.createElement('restaurant-detail');
+    restaurantDetailElement.setAttribute('data-id', restaurantId);
 
     // Menambahkan Web Component ke DOM
     detailContainer.appendChild(restaurantDetailElement);

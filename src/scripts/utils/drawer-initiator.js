@@ -7,7 +7,7 @@ function drawerInitiator({
   sideBarButton,
   menuButton,
 }) {
-  
+
   const updateAriaAttributes = () => {
     drawerButton.setAttribute('aria-expanded', isSideBarOpen.toString());
     drawerNavigation.setAttribute('aria-hidden', (!isSideBarOpen).toString());
@@ -16,7 +16,7 @@ function drawerInitiator({
   const toggleSidebar = () => {
     drawerNavigation.classList.toggle('open');
     sideBarButton.forEach((button) => {
-      button.classList.toggle('close')
+      button.classList.toggle('close');
     });
     isSideBarOpen = !isSideBarOpen;
     updateAriaAttributes();

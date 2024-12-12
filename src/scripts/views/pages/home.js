@@ -41,8 +41,8 @@ const home = {
 
     try {
       // Ganti API_ENDPOINT dengan URL API yang sesuai
-      const response = await fetch(API_ENDPOINT + '/list');
-      
+      const response = await fetch(`${API_ENDPOINT  }/list`);
+
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -62,7 +62,7 @@ const home = {
 
         // Memotong deskripsi jika lebih dari 125 karakter
         if (deskripsi.length > 125) {
-          deskripsi = deskripsi.substring(0, 125) + '...';
+          deskripsi = `${deskripsi.substring(0, 125)  }...`;
         }
 
         duration += 1000;
@@ -86,11 +86,11 @@ const home = {
       daftar_restoran.innerHTML = restoranCard;
     } catch (error) {
       Swal.fire({
-        title: "Ups...!",
-        text: "There is something wrong: " + error,
-        icon: "warning",
-        color: "#10375C",
-        confirmButtonColor: "#EB8317"
+        title: 'Ups...!',
+        text: `There is something wrong: ${  error}`,
+        icon: 'warning',
+        color: '#10375C',
+        confirmButtonColor: '#EB8317'
       });
       const main = document.querySelector('main');
       main.innerHTML = '<p  style="text-align:center; font-weight:bold;">Terjadi kesalahan saat memuat data restoran. Silakan coba lagi nanti.</p>';

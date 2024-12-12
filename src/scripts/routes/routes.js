@@ -1,11 +1,11 @@
-import home from '../views/pages/home';
-import detail_restaurants from '../views/pages/detail-restaurants';
-import favorite_restaurants from '../views/pages/favorite-restaurants';
+import Home from '../views/pages/Home';
+import DetailRestaurants from '../views/pages/Detail-restaurants';
+import FavoriteRestaurants from '../views/pages/Favorite-restaurants';
 
 const routes = {
-  '/': home,
-  '/favorite': favorite_restaurants,
-  '/detail/:id': detail_restaurants
+  '/': Home,
+  '/favorite': FavoriteRestaurants,
+  '/detail/:id': DetailRestaurants
 };
 
 export default routes;

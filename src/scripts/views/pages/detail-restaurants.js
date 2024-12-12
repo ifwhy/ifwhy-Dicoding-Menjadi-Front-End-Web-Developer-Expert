@@ -4,7 +4,7 @@ if (!customElements.get('restaurant-detail')) {
   customElements.define('restaurant-detail', RestaurantDetail);
 }
 
-const detail_restaurants = {
+const detailRestaurants = {
   async render() {
     return `
       <style>
@@ -44,4 +44,4 @@ const detail_restaurants = {
   },
 };
 
-export default detail_restaurants;
+export default detailRestaurants;

@@ -7,7 +7,7 @@ if (!customElements.get('restoran-card')) {
   customElements.define('restoran-card', RestoranCard);
 }
 
-const home = {
+const Home = {
   async render() {
     return `
       <!-- Jumbotron -->
@@ -37,7 +37,7 @@ const home = {
 
   async afterRender() {
     // Fungsi ini akan dipanggil setelah render()
-    const daftar_restoran = document.getElementById('daftar-restoran');
+    const daftarRestoran = document.getElementById('daftar-restoran');
 
     try {
       // Ganti API_ENDPOINT dengan URL API yang sesuai
@@ -49,7 +49,7 @@ const home = {
 
       const { restaurants } = await response.json();
       if (!restaurants.length) {
-        daftar_restoran.innerHTML = '<p  style="text-align:center">Data restoran tidak tersedia.</p>';
+        daftarRestoran.innerHTML = '<p  style="text-align:center">Data restoran tidak tersedia.</p>';
         return;
       }
 
@@ -83,7 +83,7 @@ const home = {
         `;
       });
 
-      daftar_restoran.innerHTML = restoranCard;
+      daftarRestoran.innerHTML = restoranCard;
     } catch (error) {
       Swal.fire({
         title: 'Ups...!',
@@ -98,4 +98,4 @@ const home = {
   },
 };
 
-export default home;
+export default Home;

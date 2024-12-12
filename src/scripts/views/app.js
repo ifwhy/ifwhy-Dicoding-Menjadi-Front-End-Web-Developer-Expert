@@ -1,6 +1,7 @@
 import drawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
+import skipToContent from '../utils/skip-to-content';
 
 class App {
   constructor({ drawerButton, drawerNavigation, closeIcon, sideBarButton, menuButton, content }) {
@@ -12,6 +13,7 @@ class App {
     this._content = content;
 
     this._initialAppShell();
+    skipToContent();
   }
 
   _initialAppShell() {

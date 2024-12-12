@@ -6,7 +6,7 @@ if (!customElements.get('restoran-card')) {
   customElements.define('restoran-card', RestoranCard);
 }
 
-const favorite_restaurants = {
+const FavoriteRestaurants = {
   async render() {
     return `
         <!-- Jumbotron -->
@@ -38,7 +38,7 @@ const favorite_restaurants = {
 
   async afterRender(){
     // Fungsi ini akan dipanggil setelah render()
-    const daftar_restoran = document.getElementById('daftar-restoran');
+    const daftarRestoran = document.getElementById('daftar-restoran');
     const tulisanJikaAda = document.getElementById('tulisan-jika-ada');
     const heroCOntent = document.querySelector('.hero-content');
     const h3HeroContent = heroCOntent.querySelector('h3');
@@ -85,7 +85,7 @@ const favorite_restaurants = {
             `;
       });
 
-      daftar_restoran.innerHTML = restoranCard;
+      daftarRestoran.innerHTML = restoranCard;
     } catch (error) {
       Swal.fire({
         title: 'Ups...!',
@@ -100,4 +100,4 @@ const favorite_restaurants = {
   }
 };
 
-export default favorite_restaurants;
+export default FavoriteRestaurants;

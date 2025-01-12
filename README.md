@@ -1,7 +1,7 @@
 
 # Kulinary - Kuliner Nyentrik
 
-Projek ini merupakan submission untuk kelas [Menjadi Front-End Web Developer Expert](https://www.dicoding.com/academies/219) dari [Dicoding](https://www.dicoding.com) pada beasiswa [DBS Foundation Coding Camp 2024](https://www.dbs.com/newsroom/DBS_Foundation_holds_DBS_Foundation_Coding_Camp_2024_to_offer_free_coding_classes). Untuk melihat kode submission pertama, kedua, dan ketiga, pergi ke [https://github.com/ifwhy/ifwhy-Dicoding-Menjadi-Front-End-Web-Developer-Expert/releases](releases).
+Projek ini merupakan submission untuk kelas [Menjadi Front-End Web Developer Expert](https://www.dicoding.com/academies/219) dari [Dicoding](https://www.dicoding.com) pada beasiswa [DBS Foundation Coding Camp 2024](https://www.dbs.com/newsroom/DBS_Foundation_holds_DBS_Foundation_Coding_Camp_2024_to_offer_free_coding_classes). Untuk melihat kode submission pertama, kedua, dan ketiga, pergi ke [releases](https://github.com/ifwhy/ifwhy-Dicoding-Menjadi-Front-End-Web-Developer-Expert/releases).
 
 > **_PERINGATAN: Jadikan repositori ini sebagai rujukan/referensi._**
 >

@@ -27,24 +27,10 @@ Scenario('Unlikes a restaurant and then verifies it in favorite restaurants', as
 
   I.seeElement('.content #form-add-to-favorite button');
   I.wait(2);
-  // I.executeScript(() => {
-  //   const firstCard = document.querySelector('restaurant-detail');
-  //   const shadowRoot = firstCard.shadowRoot;
-  //   const buttonFavorite = shadowRoot.querySelector('#form-add-to-favorite button');
-  //   buttonFavorite.click();
-  // });
-  // I.click('restaurant-detail #form-add-to-favorite button');
   I.wait(2);
   I.seeElement('#form-add-to-favorite button');
   I.click('#form-add-to-favorite button');
 
-  // I.wait(5);
-  // I.waitForVisible('.swal2-popup .swal2-actions .swal2-confirm', 2);
-
-  // Klik tombol "OK" pada SweetAlert
-  // I.waitForElement('button.swal2-confirm.swal2-styled.swal2-default-outline', 5);
-  // I.wait(3);
-  // I.click('button.swal2-confirm.swal2-styled.swal2-default-outline');
   I.wait(2);
   I.see('Remove Restaurant from Favorite', '#form-add-to-favorite button');
 

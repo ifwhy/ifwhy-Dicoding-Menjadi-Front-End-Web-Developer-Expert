@@ -1,0 +1,45 @@
+{
+    "id": "kulinary-pwa-1",
+    "name": "Kulinary - Kuliner Nyentrik",
+    "short_name": "Kulinary",
+    "theme_color": "#EB8317",
+    "background_color": "#F4F6FF",
+    "description": "Kulinary adalah aplikasi yang menyediakan informasi kuliner nyentrik di Indonesia.",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "images/webmanifest/favicon-16x16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      }, {
+        "src": "images/webmanifest/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      }, {
+        "src": "images/webmanifest/favicon-96x96.png",
+        "sizes": "96x96",
+        "type": "image/png"
+      }, {
+        "src": "images/webmanifest/android-icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      }, {
+        "src": "images/webmanifest/android-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "screenshots": [
+        {
+        "src": "images/webmanifest/kulinary-icon.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "form_factor": "wide"
+        }, {
+          "src": "images/webmanifest/kulinary-icon.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+    ]
+}

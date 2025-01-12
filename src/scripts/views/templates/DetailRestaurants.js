@@ -2,9 +2,11 @@ import FavoriteRestaurantDB from '../../data/favorite-restaurant-idb';
 import { API_ENDPOINT } from '../../globals/API_ENDPOINT';
 import Swal from 'sweetalert2';
 import FavoriteButton from '../components/favorite-button';
+
 if (!customElements.get('favorite-button')) {
   customElements.define('favorite-button', FavoriteButton);
 }
+
 class RestaurantDetail extends HTMLElement {
   constructor() {
     super();
@@ -65,23 +67,9 @@ class RestaurantDetail extends HTMLElement {
 
       if (isDataExist) {
         await FavoriteRestaurantDB.deleteRestaurant(this.getAttribute('data-id'));
-        // Swal.fire({
-        //   title: 'Success!',
-        //   text: 'Restaurant has been removed from your favorite list',
-        //   icon: 'success',
-        //   color: '#10375C',
-        //   confirmButtonColor: '#EB8317'
-        // });
       } else {
         const restaurantData = await this._fetchRestaurantDetail(this.getAttribute('data-id'));
         await FavoriteRestaurantDB.putRestaurant(restaurantData);
-        // Swal.fire({
-        //   title: 'Success!',
-        //   text: 'Restaurant has been added to your favorite list',
-        //   icon: 'success',
-        //   color: '#10375C',
-        //   confirmButtonColor: '#EB8317'
-        // });
       }
 
       // Perbarui teks tombol setelah operasi selesai

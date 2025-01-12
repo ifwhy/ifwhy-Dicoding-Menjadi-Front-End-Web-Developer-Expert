@@ -102,7 +102,7 @@ Prosedur menjalankan projek ini di lokal
 
 ```bash
   git clone https://github.com/ifwhy/ifwhy-Dicoding-Menjadi-Front-End-Web-Developer-Expert.git
-  cd Dicoding-Menjadi-Front-End-Web-Developer-Expert
+  cd ifwhy-Dicoding-Menjadi-Front-End-Web-Developer-Expert
   npm i
   npm run start-dev
 ```

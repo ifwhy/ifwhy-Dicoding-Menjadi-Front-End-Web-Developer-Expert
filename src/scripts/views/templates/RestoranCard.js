@@ -17,26 +17,35 @@ class RestoranCard extends HTMLElement {
             margin-bottom: 2rem;
             transition: box-shadow 0.3s ease; /* Smooth transition */
           }
-  
+
           .restoran:hover {
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.1); /* Larger shadow on hover */
           }
-  
+
           .restoran-atas {
             display: flex;
             justify-content: space-between;
             align-items: end;
-            background-image: var(--foto);
-            background-size: cover;
-            background-position: center;
+            position: relative;
             height: 10rem;
             border-top-left-radius: 0.5rem;
             border-top-right-radius: 0.5rem;
             padding: 1rem;
-            position: relative;
             transition: transform 0.5s ease, background-size 0.5s ease;
           }
-  
+
+          .restoran-atas img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Makes the image cover the container */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Place the image behind the other content */
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+          }
+
           .restoran-atas::after {
             content: '';
             position: absolute;
@@ -48,41 +57,46 @@ class RestoranCard extends HTMLElement {
             border-bottom-left-radius: 0.5rem;
             border-bottom-right-radius: 0.5rem;
           }
-  
+
           .restoran-bawah {
-            padding: 1.5rem 1rem 1rem 1rem;
+            padding: 0.5rem 1rem 1rem 1rem; /* Reduced padding on top */
             min-height: 8rem;
-            display:flex;
+            display: flex;
             flex-direction: column;
             align-items: center;
           }
-  
-          .restoran-atas .location-icon,
-          .restoran-atas .rating-icon {
+
+          .restoran-bawah .location-rating {
             display: flex;
-            justify-content: center;
-            font-weight: bold;
-            gap: 0.5rem;
-            align-items: center;
-            z-index: 1;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 1rem;
           }
-  
-          .restoran-atas .location-icon img,
-          .restoran-atas .rating-icon img {
-            width: 2rem; 
-            height: 2rem;
+
+          .restoran-bawah .location-icon,
+          .restoran-bawah .rating-icon {
+            display: flex;
+            gap: 0.5rem;
+            font-weight: normal;  /* Font size becomes smaller */
+            align-items: center;
+          }
+
+          .restoran-bawah .location-icon img,
+          .restoran-bawah .rating-icon img {
+            width: 1.5rem;  /* Smaller icon size */
+            height: 1.5rem;
             object-fit: contain; 
           }
-  
-          .restoran-atas .location-icon p,
-          .restoran-atas .rating-icon p {
+
+          .restoran-bawah .location-icon p,
+          .restoran-bawah .rating-icon p {
             margin: 0;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+            color: black;
+            font-size: 1rem;  /* Smaller text size */
+            font-weight: normal; /* Font weight adjusted */
+            text-shadow: none;  /* Removed text shadow for a cleaner look */
           }
-  
+
           .restoran a {
             color: var(--tertiary-color);
             text-decoration: none;
@@ -93,43 +107,47 @@ class RestoranCard extends HTMLElement {
             display: inline-block;
             min-height: 44px;
             min-width: 44px;
+            text-align: center; /* Center the title */
           }
-  
+
           .restoran a:hover {
             text-decoration: underline;
           }
-            
+
           .restoran a:focus {
             text-decoration: none;
             border-radius: 0.5rem;
             outline: 2px solid var(--tertiary-color);
           }
-  
+
           @media screen and (min-width: 576px) {
             .restoran-bawah {
               min-height: 13rem;
             }
           }
         </style>
-  
+
         <div class="restoran">
           <div class="restoran-atas">
-            <div class="location-icon">
-              <img src="./images/icons/location-icon.png" alt="Lokasi">
-              <div>
-                <p>${this.getAttribute('lokasi')}</p>
-              </div>
-            </div>
-            <div class="rating-icon">
-              <img src="./images/icons/rating-icon.png" alt="Rating">
-              <div>
-                <p>${this.getAttribute('rating')}</p>
-              </div>
-            </div>
+            <img loading="lazy" data-src="https://raw.githubusercontent.com/dicodingacademy/a219-mfwde-labs/099-shared-files/shared-media/10-proyek-akhir/placeholder-image.jpg" src="${this.getAttribute('foto')}" alt="Restoran Image">
           </div>
           
           <div class="restoran-bawah">
             <a href="#/detail/${this.getAttribute('id')}">${this.getAttribute('nama')}</a>
+            <div class="location-rating">
+              <div class="location-icon">
+                <img src="./images/icons/location-icon.png" alt="Lokasi">
+                <div>
+                  <p>${this.getAttribute('lokasi')}</p>
+                </div>
+              </div>
+              <div class="rating-icon">
+                <img  src="./images/icons/rating-icon.png" alt="Rating">
+                <div>
+                  <p>${this.getAttribute('rating')}</p>
+                </div>
+              </div>
+            </div>
             <p>${this.getAttribute('deskripsi')}</p>
           </div>
         </div>
@@ -137,10 +155,6 @@ class RestoranCard extends HTMLElement {
 
     // Add the template to the shadow root
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    // Set the background image from the 'foto' attribute
-    const restoranAtas = this.shadowRoot.querySelector('.restoran-atas');
-    restoranAtas.style.setProperty('--foto', `url(${this.getAttribute('foto')})`);
   }
 }
 

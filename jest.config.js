@@ -14,6 +14,7 @@ const config = {
 
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['./jest.setup.js'],
 
   // A map from regular expressions to paths to transformers
   transform: {

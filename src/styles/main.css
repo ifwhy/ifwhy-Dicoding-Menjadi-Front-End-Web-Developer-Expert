@@ -2,7 +2,7 @@
   --primary-color:#F4F6FF;
   --secondary-color:#F3C623;
   --tertiary-color:#EB8317;
-  --dark-color:#10375C;
+  /* --dark-color:#10375C; */
 }
 
 html {
@@ -19,7 +19,7 @@ header {
   min-height: fit-content;
   background-color: var(--primary-color);
   top: 0;
-  color: var(--dark-color);
+  color: #10375C;
 }
 
 body {
@@ -46,7 +46,7 @@ header .skip-to-content {
   top: -100rem;
   left: 0;
   background-color: var(--primary-color);
-  color: var(--dark-color);
+  color: var(--secondary-color);
   padding: 10px;
   z-index: 9999;
   transition: top 0.3s ease;
@@ -54,7 +54,7 @@ header .skip-to-content {
 }
 header .skip-to-content:focus {
   top: 0;
-  outline: 2px solid var(--dark-color);
+  outline: 2px solid var(--secondary-color);
 }
 header .header {
   display: flex;
@@ -130,7 +130,7 @@ ul li a {
   text-decoration: none;
   transition: all 150ms ease-in-out;
 }
-ul li a:hover {
+ul li a:hover{
   background-color: var(--tertiary-color);
   color: #fff;
 }
@@ -205,7 +205,7 @@ nav .sidebar-mobile .follow-us .social-media p {
   border: 2px solid var(--primary-color);
 }
 nav .sidebar-mobile .follow-us .social-media p:hover {
-  border-bottom: 2px solid var(--dark-color);
+  border-bottom: 2px solid #10375C;
 }
 nav .sidebar-mobile .follow-us .social-media img {
   width: 2.2rem;
@@ -286,7 +286,7 @@ main .hero::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url("../public/images/heros/hero-image_2.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url("../public/images/heros/hero-image_2 -small.jpg");
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -473,7 +473,7 @@ main .restoran-atas {
     gap: 2rem;
   }
   header #navbar-big ul li a {
-    color: var(--tertiary-color);
+    color: var(--dark-color);
     border-radius: 5px;
     padding: 5px 20px;
     border: 2px solid none;
@@ -511,7 +511,17 @@ main .restoran-atas {
     padding-left: 10%;
     padding-right: 10%;
   }
+  main .hero::before {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url("../public/images/heros/hero-image_2-medium.jpg");
+  }
+
+  .active-nav {
+    color: var(--primary-color);
+    background-color: var(--tertiary-color);
+    outline: none;
+  }
 }
+
 /* Breakpoint untuk tablet 768px */
 @media screen and (min-width: 768px) {
   main .hero {
@@ -525,5 +535,8 @@ main .restoran-atas {
     padding-right: 15%;
     padding-top: 5rem;
   }
-}
 
+  main .hero::before {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url("../public/images/heros/hero-image_2.jpg");
+  }
+}

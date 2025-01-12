@@ -2,6 +2,7 @@ import drawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 import skipToContent from '../utils/skip-to-content';
+import navbarActive from '../utils/navbar-active.js';
 
 class App {
   constructor({ drawerButton, drawerNavigation, closeIcon, sideBarButton, menuButton, content }) {
@@ -14,6 +15,7 @@ class App {
 
     this._initialAppShell();
     skipToContent();
+    navbarActive();
   }
 
   _initialAppShell() {

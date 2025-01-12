@@ -40,16 +40,16 @@ const FavoriteRestaurants = {
     // Fungsi ini akan dipanggil setelah render()
     const daftarRestoran = document.getElementById('daftar-restoran');
     const tulisanJikaAda = document.getElementById('tulisan-jika-ada');
-    const heroCOntent = document.querySelector('.hero-content');
-    const h3HeroContent = heroCOntent.querySelector('h3');
-    const pHeroContent = heroCOntent.querySelector('p');
+    const heroContent = document.querySelector('.hero-content');
+    const h3HeroContent = heroContent.querySelector('h3');
+    const pHeroContent = heroContent.querySelector('p');
 
     try {
       const restaurants = await FavoriteRestaurantDB.getAllRestaurants();
       if (!restaurants.length) {
         h3HeroContent.textContent = 'Anda belum menambahkan restoran favorit.';
         pHeroContent.textContent = 'Tambahkan restoran favorit Anda sekarang!';
-        tulisanJikaAda.style.display = 'none';
+        daftarRestoran.style.display = 'none';
         return;
       }
 

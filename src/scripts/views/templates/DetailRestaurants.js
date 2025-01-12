@@ -1,7 +1,10 @@
 import FavoriteRestaurantDB from '../../data/favorite-restaurant-idb';
 import { API_ENDPOINT } from '../../globals/API_ENDPOINT';
 import Swal from 'sweetalert2';
-
+import FavoriteButton from '../components/favorite-button';
+if (!customElements.get('favorite-button')) {
+  customElements.define('favorite-button', FavoriteButton);
+}
 class RestaurantDetail extends HTMLElement {
   constructor() {
     super();
@@ -9,10 +12,18 @@ class RestaurantDetail extends HTMLElement {
   }
 
   async connectedCallback() {
-    const id = this.getAttribute('data-id');
-    const restaurantData = await this._fetchRestaurantDetail(id);
-    await this._render(restaurantData);
-    await this._handleAddToFavorite();
+    try {
+      const id = this.getAttribute('data-id');
+      const restaurantData = await this._fetchRestaurantDetail(id);
+      if (restaurantData) {
+        await this._render(restaurantData);
+        await this._handleAddToFavorite();
+      } else {
+        throw new Error('Invalid restaurant data');
+      }
+    } catch (error) {
+      this.shadowRoot.innerHTML = '<p>Failed to load restaurant details. Please try again later.</p>';
+    }
   }
 
   async _fetchRestaurantDetail(id) {
@@ -48,28 +59,29 @@ class RestaurantDetail extends HTMLElement {
     // Perbarui teks tombol saat listener diinisialisasi
     await updateButtonText();
 
-    button.addEventListener('click', async () => {
+    button.addEventListener('click', async (event) => {
+      event.preventDefault();
       const isDataExist = await FavoriteRestaurantDB.getRestaurant(this.getAttribute('data-id'));
 
       if (isDataExist) {
         await FavoriteRestaurantDB.deleteRestaurant(this.getAttribute('data-id'));
-        Swal.fire({
-          title: 'Success!',
-          text: 'Restaurant has been removed from your favorite list',
-          icon: 'success',
-          color: '#10375C',
-          confirmButtonColor: '#EB8317'
-        });
+        // Swal.fire({
+        //   title: 'Success!',
+        //   text: 'Restaurant has been removed from your favorite list',
+        //   icon: 'success',
+        //   color: '#10375C',
+        //   confirmButtonColor: '#EB8317'
+        // });
       } else {
         const restaurantData = await this._fetchRestaurantDetail(this.getAttribute('data-id'));
         await FavoriteRestaurantDB.putRestaurant(restaurantData);
-        Swal.fire({
-          title: 'Success!',
-          text: 'Restaurant has been added to your favorite list',
-          icon: 'success',
-          color: '#10375C',
-          confirmButtonColor: '#EB8317'
-        });
+        // Swal.fire({
+        //   title: 'Success!',
+        //   text: 'Restaurant has been added to your favorite list',
+        //   icon: 'success',
+        //   color: '#10375C',
+        //   confirmButtonColor: '#EB8317'
+        // });
       }
 
       // Perbarui teks tombol setelah operasi selesai
@@ -120,7 +132,7 @@ class RestaurantDetail extends HTMLElement {
             background: linear-gradient(135deg, #f8f9fa, #ffffff);
             transition: transform 0.3s ease;
           }
-  
+
           .card-resto:hover {
             transform: translateY(-10px);
           }
@@ -149,7 +161,7 @@ class RestaurantDetail extends HTMLElement {
         }
 
         .review-form input,
-        .review-form textarea {
+        .review-form textarea, #form-add-to-favorite button {
             min-height: 44px;
             min-width: 44px;
         }
@@ -171,17 +183,17 @@ class RestaurantDetail extends HTMLElement {
           border: 0.125rem solid #EB8317;
           color: #EB8317;
         }
-  
+
           .card-resto .image-container {
             position: relative;
           }
-  
+
           .card-resto img {
             width: 100%;
             height: auto;
             display: block;
           }
-  
+
           .card-resto .overlay {
             position: absolute;
             bottom: 0;
@@ -199,33 +211,33 @@ class RestaurantDetail extends HTMLElement {
             font-weight: bold;
             text-align: center;
           }
-  
+
           .card-resto .overlay:hover {
             opacity: 0;
           }
-  
+
           .card-resto .overlay h2 {
             font-size: 1.8rem;
             margin: 0 0 10px;
-            color: #FFD700; 
+            color: #FFD700;
           }
-  
+
           .card-resto .overlay p {
             margin: 5px 0;
             font-size: 0.9rem;
-            color: #ddd; 
+            color: #ddd;
           }
-  
+
           .card-resto .overlay p:hover {
-            color: #fff; 
+            color: #fff;
           }
-  
+
           .card-resto .overlay .tags {
             margin-top: 10px;
             display: flex;
             gap: 8px;
           }
-  
+
           .card-resto .overlay .tag {
             background: rgba(255, 255, 255, 0.8);
             color: #333;
@@ -233,11 +245,11 @@ class RestaurantDetail extends HTMLElement {
             border-radius: 8px;
             font-size: 0.8rem;
           }
-  
+
           .card-resto .content {
             padding: 20px 30px;
           }
-  
+
           .card-resto p {
             color: #666;
             line-height: 1.8;
@@ -248,19 +260,19 @@ class RestaurantDetail extends HTMLElement {
           .menu strong {
             color: #10375C;
           }
-  
+
           .card-resto ul {
             padding-left: 20px;
             color: #666;
           }
-  
+
           .card-resto .review {
             margin-top: 20px;
             padding: 15px;
             border-radius: 8px;
             background: #f1f3f5;
           }
-          
+
           #form-add-to-favorite {
             display: flex;
             justify-content: center;
@@ -283,7 +295,7 @@ class RestaurantDetail extends HTMLElement {
             background-color: #FFC107;
             transform: scale(1.1);
           }
-  
+
           @media (max-width: 768px) {
             .card-resto {
               max-width: 90%;
@@ -383,6 +395,24 @@ class RestaurantDetail extends HTMLElement {
       }
     });
   }
+
+  async _createFavoriteButton(restaurant) {
+    const favoriteButton = document.createElement('favorite-button');
+    favoriteButton.setAttribute('restaurant', JSON.stringify(restaurant));
+    favoriteButton.setAttribute(
+      'is-favorite',
+      `${await this._checkFavorite(restaurant.id)}`
+    );
+    favoriteButton.addEventListener('add-favorite', (ev) => {
+      FavoriteRestaurantIdb.putRestaurant(ev.detail.restaurant);
+    });
+
+    favoriteButton.addEventListener('delete-favorite', (ev) => {
+      FavoriteRestaurantIdb.deleteRestaurant(ev.detail.id);
+    });
+
+    return favoriteButton;
+  };
 
   async _postReview(reviewData) {
     try {

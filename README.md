@@ -101,8 +101,8 @@ Gunakan teknik Code Splitting untuk memisahkan vendor code dari kode asli yang A
 Prosedur menjalankan projek ini di lokal
 
 ```bash
-  git clone 
-  cd 
+  git clone https://github.com/ifwhy/ifwhy-Dicoding-Menjadi-Front-End-Web-Developer-Expert.git
+  cd Dicoding-Menjadi-Front-End-Web-Developer-Expert
   npm i
   npm run start-dev
 ```
